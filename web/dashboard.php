@@ -35,7 +35,7 @@ if (isset($_POST['execute'])) {
     try {
         $conn = new mysqli("localhost", $username, $username . '123', "pharmalink");
         $res = $conn->query($query['q']);
-        if ($query['hr']) {
+        if (str_contains($query['q'], 'SELECT') && !str_contains($query['q'], 'INSERT')) {
             $rows = array();
             while ($row = $res->fetch_assoc()) {
                 $rows[] = $row;

@@ -108,6 +108,7 @@ button {
   font-size: 17px;
   font-weight: medium;
   margin-bottom: 10px;
+  text-transform: capitalize;
 }
 
 .query p {

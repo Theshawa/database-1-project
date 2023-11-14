@@ -71,7 +71,10 @@ GRANT SELECT,
     DELETE ON `pharmalink`.`diagnosis_report` TO `jonty` @`localhost`;
 GRANT SELECT ON `pharmalink`.`medication_category` TO `jonty` @`localhost`;
 GRANT SELECT ON `pharmalink`.`medication` TO `jonty` @`localhost`;
-GRANT SELECT ON `pharmalink`.`patient` TO `jonty` @`localhost`;
+GRANT SELECT,
+    INSERT,
+    UPDATE,
+    DELETE ON `pharmalink`.`patient` TO `jonty` @`localhost`;
 GRANT SELECT,
     INSERT,
     UPDATE,
