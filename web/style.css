@@ -117,6 +117,7 @@ button {
   font-family: monospace;
   width: 100%;
   line-height: 150%;
+  overflow: auto;
 }
 
 .query button {

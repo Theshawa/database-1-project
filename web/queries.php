@@ -42,11 +42,23 @@ $admin_queries = $queries = [
     ],
     [
         'q' => 'DELETE FROM employee;',
-        't' => "Delete Employees",
+        't' => "Delete All Employees",
         'hr' => false
     ]
 ];
 
-$store_manager_queries = [];
+$store_manager_queries = [
+    [
+        'q' => 'INSERT INTO medication_category(name) VALUES("Test Category");',
+        't' => "Insert Medication Category",
+        'hr' => false
+    ],
+    [
+        'q' => 'SELECT * FROM medication_category;',
+        't' => "List Medication Categories",
+        'hr' => true
+    ],
+];
+
 $sales_associate_queries = [];
 $pharmacist_queries = [];
