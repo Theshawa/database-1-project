@@ -1,5 +1,5 @@
 <?php
-
+require "./queries.php";
 
 session_start();
 
@@ -10,52 +10,27 @@ $queries = [];
 
 switch ($role) {
     case 'admin':
-        $queries = [
-            [
-                'q' => 'INSERT INTO department(name) VALUES("Sales Department");',
-                't' => "Insert Department",
-                'hr' => false
-            ],
-            [
-                'q' => 'SELECT * FROM department;',
-                't' => "List Departments",
-                'hr' => true
-            ],
-            [
-                'q' => 'DELETE FROM department WHERE id NOT IN (SELECT * FROM (
-                    SELECT MAX(id)
-                    FROM department
-                ) AS t);',
-                't' => "Delete Departments(except last one)",
-                'hr' => false
-            ],
-            [
-                'q' => 'INSERT INTO employee(name,address,contact_no,status,reg_no,termination_date,hire_date,department) VALUES("John Wick","1234 Continental Street, New York, NY","","f","JW123456",NULL,"2014-01-15",(
-                    SELECT MAX(id)
-                    FROM department
-                ));',
-                't' => "Insert Employee",
-                'hr' => false
-            ],
-            [
-                'q' => 'SELECT * FROM employee;',
-                't' => "List Employees",
-                'hr' => true
-            ],
-            [
-                'q' => 'DELETE FROM employee;',
-                't' => "Delete Employees",
-                'hr' => false
-            ],
-        ];
+        $queries = $admin_queries;
+        break;
+    case 'store_manager':
+        $queries = $store_manager_queries;
+        break;
+    case 'sales_associate':
+        $queries = $sales_associate_queries;
+        break;
+    case 'pharmacist':
+        $queries = $pharmacist_queries;
         break;
 }
 
 
+$result = null;
+$last_ran = null;
 
 
 if (isset($_POST['execute'])) {
     $query = $queries[$_POST['execute']];
+    $last_ran = $query['t'];
 
     try {
         $conn = new mysqli("localhost", $username, $username . '123', "pharmalink");
@@ -108,15 +83,27 @@ $role = str_replace("_", " ", $_SESSION["user_role"]);
             ?>
         </div>
         <div id="result">
-            <form class="clear" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <button type="submit" name="clear-result">Clear</button>
-            </form>
+            <nav>
+                <p><?php echo $last_ran ?  "Output of query <strong>" . $last_ran . "</strong>" : "" ?></p>
+                <?php if ($result) { ?>
+                    <form class="clear" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <button type="submit" name="clear-result">Clear</button>
+                    </form>
+                <?php } ?>
+            </nav>
             <pre><?php echo $result ?? "Execute a query"; ?></pre>
         </div>
     </main>
     <footer>
 
     </footer>
+    <script>
+        const scroller = document.getElementById("content");
+        scroller.scrollTo(0, Number(localStorage.getItem("db-scroll") ?? 0))
+        scroller.addEventListener("scroll", () => {
+            localStorage.setItem("db-scroll", scroller.scrollTop)
+        })
+    </script>
 </body>
 
 </html>

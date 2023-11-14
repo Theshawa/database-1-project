@@ -30,7 +30,10 @@ if (isset($_POST['login'])) {
 <body>
     <main>
         <form class="login" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <h1>Login</h1>
+            <h1>PharmaLink Pharmacy Management</h1>
+            <br>
+            <br>
+            <p class="hint">Select a user to login</p>
             <br>
             <select name="user" id="user">
                 <option value="john-admin">John(admin)</option>
@@ -39,8 +42,20 @@ if (isset($_POST['login'])) {
                 <option value="jonty-pharmacist">Jonty(pharmacist)</option>
             </select><br>
             <button type="submit" name="login">Login</button>
+            <div class="owner">
+                <span class="dim">Developed by</span>
+                <span>Theshawa Dasun</span>
+                <span>Nethmi</span>
+                <span>Nimal</span>
+                <span>Sandaru</span>
+                <span>(UCSC Ac. year 20)</span>
+                <span class="dim">for</span>
+                <span>Project of SCS 1203 - Database 1</span>
+
+            </div>
         </form>
     </main>
+
 </body>
 
 </html>

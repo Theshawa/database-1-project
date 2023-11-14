@@ -1,6 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&display=swap");
+
 :root {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Roboto Flex", sans-serif;
   font-size: 16px;
 }
 
@@ -29,6 +30,12 @@ header span {
   text-transform: capitalize;
 }
 
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 main {
   display: flex;
   height: calc(100vh - 60px);
@@ -39,11 +46,11 @@ main #result {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  padding: 20px;
 }
 
 main #content {
   width: 60%;
+  padding: 20px;
 }
 
 main #result {
@@ -56,18 +63,28 @@ form.login {
   flex-direction: column;
   padding: 20px;
   border: 1px solid #eee;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   min-height: 400px;
   width: 100%;
+  text-align: center;
+}
+
+form.login select {
+  font-size: 20px;
+  padding: 10px;
+}
+
+form.login p.hint {
+  font-size: 15px;
+  color: #444;
 }
 
 select,
 input,
 textarea,
 button {
-  font-family: system-ui, -apple-system, BlinkqueryMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Roboto Flex", sans-serif;
   font-size: 16px;
 }
 
@@ -108,19 +125,21 @@ button {
   margin-top: 10px;
 }
 
-form.clear {
-  position: fixed;
-  z-index: 20;
-  bottom: 0;
-  right: 0;
-}
-
 form.clear button {
-  background-color: #ddd;
+  background-color: #ccc;
   color: #444;
   font-size: 13px;
   border: none;
   cursor: pointer;
+}
+
+#result nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #ddd;
+  height: 60px;
 }
 
 #result pre {
@@ -128,4 +147,21 @@ form.clear button {
   font-size: 15px;
   line-height: 24px;
   margin-top: 20px;
+  height: calc(100% - 60px);
+  padding: 20px;
+}
+
+.owner {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #222;
+  font-size: 12px;
+  margin-top: 20vh;
+}
+
+.owner span.dim {
+  color: #877;
+  margin-top: 10px;
+  margin-bottom: 2px;
 }
